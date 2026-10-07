@@ -1,0 +1,51 @@
+#============================================================================
+# ДОБАВИТЬ В main/CMakeLists.txt
+#
+# В существующий main/CMakeLists.txt проекта xiaozhi-esp32 добавьте:
+# 1. В список SRCS — файлы радио
+# 2. В REQUIRES — компоненты helix-mp3 и lcd_ili9341
+#============================================================================
+
+# --- ДОБАВИТЬ В SRCS (в существующий список) ---
+# Пример: idf_component_register(SRCS "application.cc" ... ДОБАВИТЬ СЮДА:)
+
+"radio/radio_player.cc"
+"radio/spectrum_analyzer.cc"
+"radio/radio_integration.cc"
+"boards/freenove-esp32s3-display/config.cc"
+
+# --- ДОБАВИТЬ В REQUIRES ---
+# Пример: REQUIRES ... ДОБАВИТЬ СЮДА:
+
+helix-mp3
+lcd_ili9341
+driver
+
+#============================================================================
+# ПРИМЕР ИТОГОВОГО main/CMakeLists.txt:
+#============================================================================
+#
+# idf_component_register(
+#     SRCS
+#         "application.cc"
+#         "main.cc"
+#         "ota.cc"
+#         "audio_codecs/audio_codecs.cc"
+#         "protocols/protocol.cc"
+#         "mqtt/protocol_mqtt.cc"
+#         "websocket/protocol_websocket.cc"
+#         "mcp_server.cc"
+#         "radio/radio_player.cc"
+#         "radio/spectrum_analyzer.cc"
+#         "radio/radio_integration.cc"
+#         "boards/freenove-esp32s3-display/config.cc"
+#     INCLUDE_DIRS
+#         "."
+#         "boards/freenove-esp32s3-display"
+#     REQUIRES
+#         helix-mp3
+#         lcd_ili9341
+#         driver
+#         ... (остальные существующие REQUIRES)
+# )
+#============================================================================
